@@ -1,8 +1,52 @@
-body {
-    background-color: rosybrown;
+
+html {
+    margin: 0;
+    background-color: black;
+}
+
+header {
+    padding-top: 40px;
+    margin-bottom: 5px;
+    background-color: black;
+}
+
+.profileImg {
+    width: 15%;
+    border-radius: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 2px; 
+}
+
+.title {
+    color: wheat;
+    font-family: 'Bilbo Swash Caps';
+    font-size: 50px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.tagline {
+    color: wheat;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+label {
+    color: wheat;
 }
 
 .fieldset {
     display: flex;
     flex-direction: column;
+    margin-top: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.typewriterImg {
+    width: 100%;
+    opacity: .5;
+    margin-top: 5px;
+
 }
