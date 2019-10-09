@@ -18,13 +18,14 @@ header {
 }
 
 .title {
-    color: whitesmoke;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 35px;
     text-align: center;
-    margin-top: 5px;
     text-shadow: 0 0 3px #4e878b, 0 0 5px #9f6e4a;
-    text-decoration: #4e878b underline;
+    padding-top: 13px;
+}
+
+.scrabbleLetter {
+    width: 3%;
+    /* box-shadow: 3px whitesmoke; */
 }
 
 .tagline {
