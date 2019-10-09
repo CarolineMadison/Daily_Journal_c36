@@ -25,7 +25,6 @@ header {
 
 .scrabbleLetter {
     width: 3%;
-    /* box-shadow: 3px whitesmoke; */
 }
 
 .tagline {
@@ -45,6 +44,9 @@ label {
     font-family: 'Courier New', Courier, monospace;
 }
 
+.date {
+    font-family: 'Courier New', Courier, monospace;
+}
 
 .typewriterImg {
     width: 100%;
