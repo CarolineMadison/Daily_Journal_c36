@@ -15,15 +15,16 @@ header {
     border-radius: 100px;
     display: block;
     margin: 0 auto;
-    margin-bottom: 2px; 
 }
 
 .title {
-    color: wheat;
-    font-family: 'Bilbo Swash Caps';
-    font-size: 50px;
+    color: whitesmoke;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 35px;
     text-align: center;
     margin-top: 5px;
+    text-shadow: 0 0 3px #4e878b, 0 0 5px #9f6e4a;
+    text-decoration: #4e878b underline;
 }
 
 .tagline {
@@ -49,4 +50,18 @@ label {
     opacity: .5;
     margin-top: 5px;
 
+}
+
+#mood {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#BTN {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px 5px 5px 5px;
+}
+
+.profileImg:hover {
+    transition: transform .5s ease;
+    transform: scale(1.5) rotate(360deg);
 }
