@@ -68,3 +68,11 @@ label {
     transition: transform .5s ease;
     transform: scale(1.5) rotate(360deg);
 }
+
+.journalEntryHTML {
+    color: wheat; 
+}
+
+p {
+    color: wheat;
+}
