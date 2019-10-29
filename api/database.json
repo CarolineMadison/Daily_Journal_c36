@@ -20,6 +20,13 @@
             "concept": "JavaScript Objects",
             "entry": "I needed some extra practice with JavaScript Objects and Arrays and pulling data out of them to output the correct info in the console.",
             "mood": "Happy"
+        },
+        {
+            "id": 4,
+            "date": "October 28, 2019",
+            "concept": "Welcome To Nashville, Group Project",
+            "entry": "Last week we wrapped up our Welcome To Nashville group project and presented it to Jisie. This project was the most challenging one I've worked on thus far. The mixture of personalities is different. The cohort dynamic is different. I'm an inward person. I feel situations and other people. I tend to hold the emotions of other people. I'm not a very good teacher because my patience is lacking, especially right now. I wasn't in the best mood during our standup one morning and became frustrated with a peer who, at the time, I felt was holding up our progress as a team. We kept backtracking and reiterating the same plan, which was to get from point A to point B. Long story short, I should've taken more breaks to release the frustration. Taken more deep breaths. Found more space for understanding. Not taking responsiblity for the group. I'm learning a lot at Nashville Software School. It goes well beyond the code. I'm grateful for this experience. I think I'll be one hell of a developer some day.",
+            "mood": "Happy"
         }
     ]
 }
