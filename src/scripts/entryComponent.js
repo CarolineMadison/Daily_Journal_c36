@@ -1,4 +1,4 @@
-// This function returns string for one journal entry.
+// Function that returns string for one journal entry.
 const makeJournalEntryComponent = (date, concept, entry, mood) => {
     return `
         <div class="journalEntryHTML">
@@ -9,3 +9,5 @@ const makeJournalEntryComponent = (date, concept, entry, mood) => {
         </div>
     `
 }
+
+export default makeJournalEntryComponent
