@@ -4,9 +4,9 @@ const makeJournalEntryComponent = (date, concept, entry, mood) => {
         <section class="journalEntryHTML--${entry.id}">
         <div class="journalEntryHTML">
             <h1>${date}</h1><hr />
-            <p>CONCEPT: <br><br> ${concept}</p><br>
-            <p>ENTRY: <br><br> ${entry}</p><br>
-            <p>MOOD: <br>${mood}</p>
+            <p><u>CONCEPT</u>: <br><br> ${concept}</p><br>
+            <p><u>ENTRY</u>: <br><br> ${entry}</p><br>
+            <p><u>MOOD</u>: <br><br>${mood}</p><hr /><br>
             <button id="deleteEntry--${entry.id}">Delete Entry</button>
         </div>
         </section>
