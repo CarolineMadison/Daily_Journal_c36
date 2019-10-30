@@ -50,8 +50,8 @@ const saveEntryButton = document.querySelector("#BTN")
 saveEntryButton.addEventListener("click", () => {
     // invokes createJournalEntry and stores the returned object and key values in a variable.
     const journalEntryObject = createJournalEntry(date, concept, content, mood)
-        // Fetch call to post new journal entry to the database, taking the above
-        API.saveJournalEntry(journalEntryObject)
+    // Fetch call to post new journal entry to the database, taking the above
+    API.saveJournalEntry(journalEntryObject)
         // THEN the fetch call is made to get all entries, including the new post, 
         .then(API.getJournalEntries)
         // THEN takes those entries...
@@ -66,8 +66,8 @@ saveEntryButton.addEventListener("click", () => {
                 const journalHTML = createJournalEntryComponent(entry)
                 // The function is invoked that puts each entry on the dom.
                 entryToDom(journalHTML)
-        })
-    }) // END OF createJournalEntry().
+            })
+        }) // END OF createJournalEntry().
 
         // Final, step of "click event" is to THEN clear the value of the input fields.
         .then(() => {
@@ -93,7 +93,7 @@ const radioButtonGroup = document.getElementsByName("moods")
 // For each button in the array, 
 radioButtonGroup.forEach(button => {
     // when a button is clicked, 
-   button.addEventListener("click", event => {
+    button.addEventListener("click", event => {
         // the value of that button is read and stored into a variable.
         const eventTargetValue = event.target.value
         // Fetch call to get all entries.
@@ -107,6 +107,29 @@ radioButtonGroup.forEach(button => {
         console.log(filteredArray)
     })
 })
+// .then on the array (WHERE I LEFT OFF IN CODE ON RADIO BUTTONS GET ERROR AT filteredArray. Need help.)
+
+
+
+
+
+// ||| *** FUNCTIONALITY FOR DELETING A SINGLE JOURNAL ENTRY *** ||| 
+
+const entriesContainer = document.querySelector(".entryLog")
+entriesContainer.addEventListener("click", event => {
+    if (event.target.id.startsWith("deleteEntry--")) {
+        // Extract recipe id from the button's id attribute
+        const entryToDelete = event.target.id.split("--")[1]
+        console.log(entryToDelete)
+        
+        // Invoke the delete method, then get all recipes and render them
+        // apiActions.deleteRecipe(recipeToDelete)
+        //     .then(apiActions.getAllRecipes)
+        //     .then(render)
+    }
+})
+
+
 
 
 

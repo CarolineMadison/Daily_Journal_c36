@@ -13,6 +13,12 @@ const API = {
             },
             body: JSON.stringify(journalEntryObject)
         })
+    },
+    deleteRecipe (entryId) {
+        return fetch(`${url}/${entryId}`, {
+            method: "DELETE"
+        })
+            .then(response => response.json())
     }
 }
 
