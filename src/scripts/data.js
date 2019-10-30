@@ -14,8 +14,8 @@ const API = {
             body: JSON.stringify(journalEntryObject)
         })
     },
-    deleteRecipe (entryId) {
-        return fetch(`${url}/${entryId}`, {
+    deleteEntry (id) {
+        return fetch(`${url}/${id}`, {
             method: "DELETE"
         })
             .then(response => response.json())

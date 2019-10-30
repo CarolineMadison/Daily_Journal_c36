@@ -15,12 +15,7 @@ API.getJournalEntries().then(parsedEntries => {
     // iterates over the array in the database, and for each entry, 
     parsedEntries.forEach(entry => {
         // invokes makeJournalEntryComponent, taking each key and its value as an argument, and stores the returned string in a variable.
-        const journalHtml = makeJournalEntryComponent(
-            entry.date,
-            entry.concept,
-            entry.content,
-            entry.mood
-        )
+        const journalHtml = makeJournalEntryComponent(entry)
         // Finally, the function is invoked that takes the above variable as an argument and puts each entry on the dom.
         entryToDom(journalHtml)
     })
@@ -53,7 +48,7 @@ saveEntryButton.addEventListener("click", () => {
     // Fetch call to post new journal entry to the database, taking the above
     API.saveJournalEntry(journalEntryObject)
         // THEN the fetch call is made to get all entries, including the new post, 
-        .then(API.getJournalEntries)
+        .then(API.getJournalEntries())
         // THEN takes those entries...
         .then(entries => {
             // grabs the <article> html element, stores it in a variable,
@@ -63,7 +58,7 @@ saveEntryButton.addEventListener("click", () => {
             // and for each entry,
             entries.forEach(entry => {
                 // invokes createJournalEntryComponent, which takes each entry as an argument, and puts it into a string, which is stored in a variable.
-                const journalHTML = createJournalEntryComponent(entry)
+                const journalHTML = makeJournalEntryComponent(entry)
                 // The function is invoked that puts each entry on the dom.
                 entryToDom(journalHTML)
             })
@@ -116,16 +111,30 @@ radioButtonGroup.forEach(button => {
 // ||| *** FUNCTIONALITY FOR DELETING A SINGLE JOURNAL ENTRY *** ||| 
 
 const entriesContainer = document.querySelector(".entryLog")
-entriesContainer.addEventListener("click", event => {
+entriesContainer.addEventListener("click", () => {
     if (event.target.id.startsWith("deleteEntry--")) {
         // Extract recipe id from the button's id attribute
         const entryToDelete = event.target.id.split("--")[1]
         console.log(entryToDelete)
-        
-        // Invoke the delete method, then get all recipes and render them
-        // apiActions.deleteRecipe(recipeToDelete)
-        //     .then(apiActions.getAllRecipes)
-        //     .then(render)
+        API.deleteEntry(entryToDelete)
+            .then(API.getJournalEntries())
+            // THEN takes those entries...
+            .then(entries => {
+                // GETTING ERROR API RETURNING EMPTY OBJECT thus GETTING FOR EACH ERROR THAT IT'S NOT A FUNCTION
+                console.log(entries)
+                // grabs the <article> html element, stores it in a variable,
+                const entriesContainer = document.querySelector(".entryLog")
+                // clears the <article> container, 
+                entriesContainer.innerHTML = ""
+                // and for each entry,
+                entries.forEach(entry => {
+                    // invokes createJournalEntryComponent, which takes each entry as an argument, and puts it into a string, which is stored in a variable.
+                    const journalHTML = makeJournalEntryComponent(entry)
+                    // The function is invoked that puts each entry on the dom.
+                    entryToDom(journalHTML)
+                })
+            })
+            
     }
 })
 
