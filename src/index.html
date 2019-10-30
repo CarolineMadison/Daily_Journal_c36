@@ -51,8 +51,8 @@
         <fieldset class="fieldset">
             <label for="journalDate">Mood for the Day</label>
             <select id="mood">
-                <option value="accomplished">Accomplished</option>
-                <option value="sefeated">Defeated</option>
+                <option value="zen">Zen</option>
+                <option value="hopeful">Hopeful</option>
                 <option value="frustrated">Frustrated</option>
                 <option value="happy">Happy</option>
             </select>
@@ -61,6 +61,15 @@
         <fieldset class="fieldset">
             <button id="BTN">Record Journal Entry</button>
         </fieldset>
+
+        <fieldset class="fieldset">
+            <label for="journalDate"></label>
+            <input type="radio" id="filter"></button>
+            <input type="radio" id="filter"></button>
+            <input type="radio" id="filter"></button>
+            <input type="radio" id="filter"></button>
+        </fieldset>
+
     </form>
     <article class="entryLog"></article>
     <div>
@@ -73,3 +82,10 @@
 </body>
 
 </html>
+
+<!-- Using <fieldset>, <legend>, <input type="radio">, and <label> HTML components, construct a set of radio buttons for selecting one of the moods. It's important that each of the radio buttons has the same value for the name attribute, but each should a different value for the value attribute. -->
+
+            <div>
+                <input type="radio" id="louie" name="drone" value="louie">
+                <label for="louie">Louie</label>
+              </div>

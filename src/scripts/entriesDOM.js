@@ -1,7 +1,8 @@
-// grabs div container from index.html 
-// function that takes a single entry as an argument and puts it on the dom in div container
-const entryToDom = (entry) => {   
+// function that takes a single entry as an argument
+const entryToDom = (entry) => {  
+    // grabs the <article> html element, stores it in a variable 
     const entriesContainer = document.querySelector(".entryLog")
+        // and puts it on the dom.
         entriesContainer.innerHTML += entry
 
     }
