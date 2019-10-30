@@ -96,3 +96,38 @@ p {
 .date {
     text-decoration-style: underline;
 }
+
+/* styling for Radio Buttons */
+
+#radioButtons {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+#radioButton--Zen {
+    margin-right: 25px;
+}
+
+#radioButton--Hopeful {
+    margin-right: 25px;
+}
+
+#radioButton--Frustrated {
+    margin-right: 25px;
+}
+
+.zenLabel {
+    margin-right: 3px;
+}
+
+.hopefulLabel {
+    margin-right: 3px;
+}
+
+.frustratedLabel {
+    margin-right: 3px;
+}
+
+.tankedLabel {
+    margin-right: 5px;
+}

@@ -61,13 +61,21 @@
         <fieldset class="fieldset">
             <button id="BTN">Record Journal Entry</button>
         </fieldset>
-
+        <!-- "They are called radio buttons because they look and operate in a similar manner to the push buttons on old-fashioned radios." - MDN Web Docs -->
         <fieldset class="fieldset">
-            <label for="journalDate"></label>
-            <input type="radio" id="filter"></button>
-            <input type="radio" id="filter"></button>
-            <input type="radio" id="filter"></button>
-            <input type="radio" id="filter"></button>
+            <legend>
+                <p>Filter Entries by Mood</p>
+            </legend>
+            <div id="radioButtons">
+                <label class="zenLabel for="zen">Zen</label>
+                <input type="radio" id="radioButton--Zen" name="zen" value="zen" checked>
+                <label class="hopefulLabel" for="hopeful">Hopeful</label>
+                <input type="radio" id="radioButton--Hopeful" name="hopeful" value="hopeful">
+                <label class="frustratedLabel" for="frustrated">Frustrated</label>
+                <input type="radio" id="radioButton--Frustrated" name="frustrated" value="frustrated">
+                <label class="tankedLabel for="tanked">Tanked</label>
+                <input type="radio" id="radioButton--Tanked" name="tanked" value="tanked">
+            </div>
         </fieldset>
 
     </form>
@@ -75,17 +83,9 @@
     <div>
         <img class="typewriterImg" src="Images/typewriterImage.jpg">
     </div>
-    <!-- <script src="scripts/data.js"></script> -->
-    <!-- <script src="scripts/entryComponent.js"></script> -->
-    <!-- <script src="scripts/entriesDOM.js"></script> -->
     <script type="module" src="scripts/journal.js"></script>
 </body>
 
 </html>
 
 <!-- Using <fieldset>, <legend>, <input type="radio">, and <label> HTML components, construct a set of radio buttons for selecting one of the moods. It's important that each of the radio buttons has the same value for the name attribute, but each should a different value for the value attribute. -->
-
-            <div>
-                <input type="radio" id="louie" name="drone" value="louie">
-                <label for="louie">Louie</label>
-              </div>

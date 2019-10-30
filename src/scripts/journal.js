@@ -67,7 +67,7 @@ saveEntryButton.addEventListener("click", () => {
                 // The function is invoked that puts each entry on the dom.
                 entryToDom(journalHTML)
         })
-    }) // end of createJournalEntry()
+    }) // END OF createJournalEntry().
 
         // Final, step of "click event" is to THEN clear the value of the input fields.
         .then(() => {
@@ -78,8 +78,16 @@ saveEntryButton.addEventListener("click", () => {
         })
 })
 
-// ||| *** FUNCTIONALITY FOR RADIO BUTTONS TO FILTER ENTRIES BY MOOD ***
-// "They are called radio buttons because they look and operate in a similar manner to the push buttons on old-fashioned radios." - MDN Web Docs |||
+// ||| *** FUNCTIONALITY FOR RADIO BUTTONS TO FILTER ENTRIES BY MOOD *** |||
+
+// "They are called radio buttons because they look and operate in a similar manner to the push buttons on old-fashioned radios." - MDN Web Docs //
+
+
+// <input> elements of type radio are generally used in radio groups—collections of radio buttons describing a set of related options. Only one radio button in a given group can be selected at the same time.
+
+// The value attribute is a DOMString containing the radio button's value. The value is never shown to the user by their user agent. Instead, it's used to identify which radio button in a group is selected.
+
+
 
 
 
