@@ -88,6 +88,27 @@ saveEntryButton.addEventListener("click", () => {
 // The value attribute is a DOMString containing the radio button's value. The value is never shown to the user by their user agent. Instead, it's used to identify which radio button in a group is selected.
 
 
+// Grabs the shared name="mood" on each of the inputs and puts them into an array, or group, which is stored in a variable.
+const radioButtonGroup = document.getElementsByName("moods")
+// For each button in the array, 
+radioButtonGroup.forEach(button => {
+    // when a button is clicked, 
+   button.addEventListener("click", event => {
+        // the value of that button is read and stored into a variable.
+        const eventTargetValue = event.target.value
+        // Fetch call to get all entries.
+        API.getJournalEntries().then(entries => {
+            console.log(entries)
+            // Filters through the entries array and for each entry checks to see if entry.mood matches event.target.value,
+            const filteredArray = entries.filter(entry => entry.mood === eventTargetValue)
+            // and returns the filtered array. 
+            return filteredArray
+        })
+        console.log(filteredArray)
+    })
+})
+
+
 
 
 
