@@ -117,15 +117,18 @@ entriesContainer.addEventListener("click", () => {
         const entryToDelete = event.target.id.split("--")[1]
         console.log(entryToDelete)
         API.deleteEntry(entryToDelete)
-            .then(API.getJournalEntries)
-            // THEN takes those entries...
-            // .then(entries => {
-            //     console.log(entries)
-            //     // clears the <article> container, 
-            //     // entriesContainer.innerHTML = ""
-            //     // and puts entries on the dom.
-            //     entryToDom(entries)
-            // })
+        entriesContainer.innerHTML = ""
+        console.log(entryToDelete)
+        API.getJournalEntries().then(parsedEntries => {
+            // iterates over the array in the database, and for each entry, 
+            parsedEntries.forEach(entry => {
+                // invokes makeJournalEntryComponent, taking each key and its value as an argument, and stores the returned string in a variable.
+                const journalHtml = makeJournalEntryComponent(entry)
+                
+                // Finally, the function is invoked that takes the above variable as an argument and puts each entry on the dom.
+                entryToDom(journalHtml)
+            })
+        })
     }
 })
             
