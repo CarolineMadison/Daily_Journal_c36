@@ -74,14 +74,7 @@ saveEntryButton.addEventListener("click", () => {
 })
 
 // ||| *** FUNCTIONALITY FOR RADIO BUTTONS TO FILTER ENTRIES BY MOOD *** |||
-
 // "They are called radio buttons because they look and operate in a similar manner to the push buttons on old-fashioned radios." - MDN Web Docs //
-
-
-// <input> elements of type radio are generally used in radio groups—collections of radio buttons describing a set of related options. Only one radio button in a given group can be selected at the same time.
-
-// The value attribute is a DOMString containing the radio button's value. The value is never shown to the user by their user agent. Instead, it's used to identify which radio button in a group is selected.
-
 
 // Grabs the shared name="mood" on each of the inputs and puts them into an array, or group, which is stored in a variable.
 const radioButtonGroup = document.getElementsByName("moods")
@@ -94,19 +87,19 @@ radioButtonGroup.forEach(button => {
         // Fetch call to get all entries.
         API.getJournalEntries().then(entries => {
             console.log(entries)
-            // Filters through the entries array and for each entry checks to see if entry.mood matches event.target.value,
+            // Filters through the entries array and for each entry checks to see if entry.mood matches event.target.value, stores it in a variable,
             const filteredArray = entries.filter(entry => entry.mood === eventTargetValue)
-            // and returns the filtered array. 
-            return filteredArray
+            // and for each entry in the array, invokes makeJournalEntryComponent,
+            for (const entry of filteredArray) {
+                const journalHtml = makeJournalEntryComponent(entry)
+                // clears the container, 
+                entriesContainer.innerHTML = ""
+                // and invokes function that puts entries on the dom.
+                entryToDom(journalHtml)
+            }  
         })
-        console.log(filteredArray)
     })
 })
-// .then on the array (WHERE I LEFT OFF IN CODE ON RADIO BUTTONS GET ERROR AT filteredArray. Need help.)
-
-
-
-
 
 // ||| *** FUNCTIONALITY FOR DELETING A SINGLE JOURNAL ENTRY *** ||| 
 
@@ -115,7 +108,6 @@ entriesContainer.addEventListener("click", () => {
     if (event.target.id.startsWith("deleteEntry--")) {
         // Extract id from the button's id attribute
         const entryToDelete = event.target.id.split("--")[1]
-        console.log(entryToDelete)
         // Fetch to delete entry which takes entry to delete as argument,
         API.deleteEntry(entryToDelete)
         // THEN gets all journal entries,
@@ -132,9 +124,10 @@ entriesContainer.addEventListener("click", () => {
         })
     }
 })
-            
-    
-// Still working on radio buttons. Next step is to work on edit. 10/30/19
+
+// ||| *** FUNCTIONALITY FOR EDITING A SINGLE JOURNAL ENTRY *** ||| 
+
+
 
 
 
