@@ -113,19 +113,20 @@ radioButtonGroup.forEach(button => {
 const entriesContainer = document.querySelector(".entryLog")
 entriesContainer.addEventListener("click", () => {
     if (event.target.id.startsWith("deleteEntry--")) {
-        // Extract recipe id from the button's id attribute
+        // Extract id from the button's id attribute
         const entryToDelete = event.target.id.split("--")[1]
         console.log(entryToDelete)
+        // Fetch to delete entry which takes entry to delete as argument,
         API.deleteEntry(entryToDelete)
-        entriesContainer.innerHTML = ""
-        console.log(entryToDelete)
-        API.getJournalEntries().then(parsedEntries => {
+        // THEN gets all journal entries,
+        .then(API.getJournalEntries).then(parsedEntries => {
             // iterates over the array in the database, and for each entry, 
             parsedEntries.forEach(entry => {
-                // invokes makeJournalEntryComponent, taking each key and its value as an argument, and stores the returned string in a variable.
+                // invokes makeJournalEntryComponent, taking each entry as an argument
                 const journalHtml = makeJournalEntryComponent(entry)
-                
-                // Finally, the function is invoked that takes the above variable as an argument and puts each entry on the dom.
+                // and clears the container.
+                entriesContainer.innerHTML = ""
+                // Finally, the function is invoked that puts each entry on the dom.
                 entryToDom(journalHtml)
             })
         })
@@ -133,7 +134,7 @@ entriesContainer.addEventListener("click", () => {
 })
             
     
-// Running into error putting entries back on the dom. Still working on radio buttons. Next step is to work on edit. 10/30/19
+// Still working on radio buttons. Next step is to work on edit. 10/30/19
 
 
 
