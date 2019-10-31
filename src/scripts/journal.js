@@ -117,27 +117,20 @@ entriesContainer.addEventListener("click", () => {
         const entryToDelete = event.target.id.split("--")[1]
         console.log(entryToDelete)
         API.deleteEntry(entryToDelete)
-            .then(API.getJournalEntries())
+            .then(API.getJournalEntries)
             // THEN takes those entries...
-            .then(entries => {
-                // GETTING ERROR API RETURNING EMPTY OBJECT thus GETTING FOR EACH ERROR THAT IT'S NOT A FUNCTION
-                console.log(entries)
-                // grabs the <article> html element, stores it in a variable,
-                const entriesContainer = document.querySelector(".entryLog")
-                // clears the <article> container, 
-                entriesContainer.innerHTML = ""
-                // and for each entry,
-                entries.forEach(entry => {
-                    // invokes createJournalEntryComponent, which takes each entry as an argument, and puts it into a string, which is stored in a variable.
-                    const journalHTML = makeJournalEntryComponent(entry)
-                    // The function is invoked that puts each entry on the dom.
-                    entryToDom(journalHTML)
-                })
-            })
-            
+            // .then(entries => {
+            //     console.log(entries)
+            //     // clears the <article> container, 
+            //     // entriesContainer.innerHTML = ""
+            //     // and puts entries on the dom.
+            //     entryToDom(entries)
+            // })
     }
 })
-
+            
+    
+// Running into error putting entries back on the dom. Still working on radio buttons. Next step is to work on edit. 10/30/19
 
 
 
