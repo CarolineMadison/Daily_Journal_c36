@@ -20,13 +20,17 @@ const API = {
         })
             .then(response => response.json())
     },
-    editEntry(journalEntryid) {
-        return fetch(`http://localhost:8088/entries/${journalEntryid}`, {
+    getSingleJournalEntry(journalEntryId) {
+        return fetch(`http://localhost:8088/entries/${journalEntryId}`)
+        .then(response => response.json())
+    }, 
+    editEntry(journalEntryId) {
+        return fetch(`http://localhost:8088/entries/${journalEntryId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(journalEntryid)
+            body: JSON.stringify(journalEntryId)
         })
 
     }

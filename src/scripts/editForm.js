@@ -1,6 +1,7 @@
-const editForm = () => {
+const editForm = (entry) => {
     return `
         <form>
+        <input type="hidden" id="hiddenId" value="" />
         <fieldset class="fieldset">
             <label for="journalDate">Date of Entry</label>
             <input class="date" type="date" name="journalDate" id="journalDate">
