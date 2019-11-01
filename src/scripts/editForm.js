@@ -28,7 +28,7 @@ const editForm = (entry) => {
         </fieldset>
 
         <fieldset class="fieldset">
-            <button id="BTN">Record Journal Entry</button>
+            <button id="BTN">Save Changes</button>
         </fieldset>
     </form>
     `

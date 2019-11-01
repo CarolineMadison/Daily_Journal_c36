@@ -74,6 +74,7 @@ saveEntryButton.addEventListener("click", () => {
         })
 })
 
+
 // ||| *** FUNCTIONALITY FOR RADIO BUTTONS TO FILTER ENTRIES BY MOOD *** |||
 // "They are called radio buttons because they look and operate in a similar manner to the push buttons on old-fashioned radios." - MDN Web Docs //
 
@@ -139,6 +140,7 @@ entriesContainer.addEventListener("click", () => {
 // 9. Show edited thing on Dom
 
 // When the edit button is clicked,
+const hiddenId = document.querySelector("#hiddenId")
 entriesContainer.addEventListener("click", () => {
     // check to see if that button is the edit button. 
     if (event.target.id.startsWith("editEntry--")) {
@@ -150,6 +152,7 @@ entriesContainer.addEventListener("click", () => {
             .then(entry => {
                 // invoke editForm,
                 editForm(entry)
+                
                 // grab references to the input fields in the form, 
                 // and assign their values to the entry being edited.
                 document.querySelector("#hiddenId").value = entry.id,
