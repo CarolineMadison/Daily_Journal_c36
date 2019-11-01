@@ -34,6 +34,13 @@
       "content": "I'm working from home today. I prefer to say working as opposed to schoolwork. It's basically the same thing, and it gets me into the mindset of this being life now. Get up. Get ready. Get kids ready. Coffee. Drop off. Commute. Spend the day. Commute home. Dinner. Quality time. Bedtime. More work. Sleep. Repeat. Day in and day out. The thing is, I really love it! It's different and new. Being a stay-at-home mom, time belonged to me and the kids. Now it belongs to school and career. Things come up. Kids get sick. You code from home in a tiny office under the stairs. It's not a perfect life, but it's a good one. I wouldn't change it for anything. ",
       "mood": "Zen",
       "id": 5
+    },
+    {
+      "date": "2019-10-31",
+      "concept": "Radio Buttons, Deleting, and Editing",
+      "content": "While logging in this journal, I'm also building it to include more functionality. As of now, I can save new entries, such as this one. The event handler on the \"Record Journal Entry\" button saves the entry to the database in my API and a new list of all the entries, including the new one, populates on the dom. I am confident in where I am at this point. As long as I stay focused and on top of lessons and practice exercises, I can not only retain these concepts, but I enjoy writing the logic. Becoming a developer doesn't disappoint. And now, to work on \"edit\". I'll use this entry as practice.",
+      "mood": "Hopeful",
+      "id": 6
     }
   ]
 }

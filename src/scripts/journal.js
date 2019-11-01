@@ -7,6 +7,7 @@
 import API from "./data.js"
 import entryToDom from "./entriesDOM.js"
 import makeJournalEntryComponent from "./entryComponent.js"
+import editForm from "./editForm.js"
 
 // ||| *** FUNCTIONALITY TO GET ENTRIES FROM DATABASE ON THE DOM *** |||
 
@@ -126,6 +127,103 @@ entriesContainer.addEventListener("click", () => {
 })
 
 // ||| *** FUNCTIONALITY FOR EDITING A SINGLE JOURNAL ENTRY *** ||| 
+
+// 1. Create Edit Button on Form +++
+// 2. Put event listener on edit button +++
+// 3. Get API Object of thing to Edit
+// 4. Show form for editing
+// 5. Populate form
+// 6. Save Button (click handler)
+// 7. Save Changes
+// 8. Get thing
+// 9. Show edited thing on Dom
+
+entriesContainer.addEventListener("click", () => {
+    if (event.target.id.startsWith("editEntry--")) {
+        // Extract id from the button's id attribute
+        const entryToEdit = event.target.id.split("--")[1]
+        console.log(entryToEdit)
+        API.editEntry(entryToEdit)
+        .then(entry => {
+            editForm(entry)
+            const updatedEntry = {
+                date: document.querySelector(".journalDate").value, 
+                concept: document.querySelector(".concept").value, 
+                content: document.querySelector(".content").value, 
+                mood: document.querySelector(".mood").value  
+            }
+            fetch (`http://localhost:8088/entries/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedEntry)
+            })
+            .then(res => res.json())
+            .then(() => {
+                /*
+                    Since this is the point in the code where you KNOW
+                    the operation completed successfully, clear the
+                    value of the hidden input field to that your
+                    application is back to the state of creating instead
+                    of editing
+                */
+                
+                document.querySelector(".entryLog").value = ""
+            })
+        
+        }) 
+    }
+})
+     // show form for editing
+        
+
+        // Now that you've retrieved the id of the recipe to edit, pass it to an editReipe function, and use fetch() to perform a PUT operation.
+        // const editEntry = id => {
+        //     const updatedObject = {
+        //         title: document.querySelector("#recipeTitle").value,
+        //         instructions: document.querySelector("#recipeInstructions").value
+        //     }
+        
+        //     // Logic for the PUT operation
+        //     fetch(`http://localhost:8088/resource/${id}`, {
+        //         method: "PUT",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify(updatedObject)
+        //     })
+        //     .then(res => res.json())
+        //     .then(() => {
+        //         /*
+        //             Since this is the point in the code where you KNOW
+        //             the operation completed successfully, clear the
+        //             value of the hidden input field to that your
+        //             application is back to the state of creating instead
+        //             of editing
+        //         */
+                
+        //         document.querySelector(".entryLog").value = ""
+        //     })
+        
+        // }
+        
+
+        // Fetch to delete entry which takes entry to delete as argument,
+        // API.deleteEntry(entryToDelete)
+        // THEN gets all journal entries,
+        // .then(API.getJournalEntries).then(parsedEntries => {
+        //     // iterates over the array in the database, and for each entry, 
+        //     parsedEntries.forEach(entry => {
+        //         // invokes makeJournalEntryComponent, taking each entry as an argument
+        //         const journalHtml = makeJournalEntryComponent(entry)
+        //         // and clears the container.
+        //         entriesContainer.innerHTML = ""
+        //         // Finally, the function is invoked that puts each entry on the dom.
+        //         entryToDom(journalHtml)
+        //     })
+        // })
+    
 
 
 

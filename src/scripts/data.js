@@ -14,13 +14,22 @@ const API = {
             body: JSON.stringify(journalEntryObject)
         })
     },
-    deleteEntry (journalEntryid) {
+    deleteEntry(journalEntryid) {
         return fetch(`http://localhost:8088/entries/${journalEntryid}`, {
             method: "DELETE"
         })
             .then(response => response.json())
     },
-}
+    editEntry(journalEntryid) {
+        return fetch(`http://localhost:8088/entries/${journalEntryid}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(journalEntryid)
+        })
 
+    }
+}
 
 export default API

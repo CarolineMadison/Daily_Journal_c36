@@ -4,7 +4,6 @@ const entryToDom = (entry) => {
     const entriesContainer = document.querySelector(".entryLog")
         // and renders to dom.
         entriesContainer.innerHTML += entry
-
     }
 
 export default entryToDom
