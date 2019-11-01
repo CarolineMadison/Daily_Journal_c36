@@ -8,13 +8,6 @@
       "mood": "Hopeful"
     },
     {
-      "id": 2,
-      "date": "2019-10-08",
-      "concept": "Group Project, Celebrity Tribute",
-      "content": "I finished my page of our application, which was News and Events. Our group worked well together to coordinate on colors and the styling of our Nav Bar and Footer. I'm pleased with the outcome of my page. I learned how to import icons as images wrapped in anchor tags that hyperlink to other websites. I felt like I grew in my CSS abilities on this project, as well as learning to be the person who has answers instead of feeling like I'm behind always having to ask someone else for answers. It will be interesting to see how repeating Front-End progresses.",
-      "mood": "Zen"
-    },
-    {
       "id": 3,
       "date": "2019-10-10",
       "concept": "JavaScript Objects",
@@ -37,10 +30,17 @@
     },
     {
       "date": "2019-10-31",
-      "concept": "Radio Buttons, Deleting, and Editing",
+      "concept": "Radio Buttons",
       "content": "While logging in this journal, I'm also building it to include more functionality. As of now, I can save new entries, such as this one. The event handler on the \"Record Journal Entry\" button saves the entry to the database in my API and a new list of all the entries, including the new one, populates on the dom. I am confident in where I am at this point. As long as I stay focused and on top of lessons and practice exercises, I can not only retain these concepts, but I enjoy writing the logic. Becoming a developer doesn't disappoint. And now, to work on \"edit\". I'll use this entry as practice.",
       "mood": "Hopeful",
       "id": 6
+    },
+    {
+      "date": "2019-11-04",
+      "concept": "asdf",
+      "content": "asdf",
+      "mood": "Zen",
+      "id": 7
     }
   ]
 }
