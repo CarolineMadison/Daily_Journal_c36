@@ -36,9 +36,9 @@
       "id": 6
     },
     {
-      "date": "2019-11-04",
-      "concept": "asdf",
-      "content": "asdf",
+      "date": "2019-11-02",
+      "concept": "Code Works!",
+      "content": "My journal is now a fully-functioning CRUD app written in vanilla javascript. Cool!",
       "mood": "Zen",
       "id": 7
     }

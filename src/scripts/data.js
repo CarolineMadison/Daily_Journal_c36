@@ -1,3 +1,6 @@
+
+import getAllJournalEntriesToDom from "./journal.js"
+
 const url = "http://localhost:8088/entries"
 
 const API = {
@@ -13,6 +16,7 @@ const API = {
             },
             body: JSON.stringify(journalEntryObject)
         })
+        .then(getAllJournalEntriesToDom)
     },
     deleteEntry(journalEntryid) {
         return fetch(`http://localhost:8088/entries/${journalEntryid}`, {

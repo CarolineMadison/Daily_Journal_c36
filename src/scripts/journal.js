@@ -12,15 +12,19 @@ import editForm from "./editForm.js"
 // ||| *** FUNCTIONALITY TO GET ENTRIES FROM DATABASE ON THE DOM *** |||
 
 // Fetch call that gets the data for all entries,
-API.getJournalEntries().then(parsedEntries => {
-    // iterates over the array in the database, and for each entry, 
-    parsedEntries.forEach(entry => {
-        // invokes makeJournalEntryComponent, taking each key and its value as an argument, and stores the returned string in a variable.
-        const journalHtml = makeJournalEntryComponent(entry)
-        // Finally, the function is invoked that takes the above variable as an argument and puts each entry on the dom.
-        entryToDom(journalHtml)
+const getAllJournalEntriesToDom = () => {
+    API.getJournalEntries().then(parsedEntries => {
+        entriesContainer.innerHTML = ""
+        // iterates over the array in the database, and for each entry, 
+        parsedEntries.forEach(entry => {
+            // invokes makeJournalEntryComponent, taking each key and its value as an argument, and stores the returned string in a variable.
+            const journalHtml = makeJournalEntryComponent(entry)
+            // Finally, the function is invoked that takes the above variable as an argument and puts each entry on the dom.
+            entryToDom(journalHtml)
+        })
     })
-})
+}
+getAllJournalEntriesToDom()
 
 // ||| *** FUNCTIONALITY TO POST A NEW JOURNAL ENTRY *** |||
 
@@ -51,35 +55,29 @@ saveEntryButton.addEventListener("click", () => {
     console.log(hiddenId)
     if (hiddenId === "") {
         API.saveJournalEntry(journalEntryObject)
+            date.value = ""
+            concept.value = ""
+            content.value = ""
+            mood.value = ""
         // THEN the fetch call is made to get all entries, including the new post, 
     } else {
-        API.editEntry(hiddenId, journalEntryObject)// edit functionality
-        console.log(journalEntryObject)
+        if (hiddenId !== "") {
+        entriesContainer.innerHTML = ""
+        API.editEntry(hiddenId, journalEntryObject)
+        .then(getAllJournalEntriesToDom)
+        .then(() => {
+            date.value = ""
+            concept.value = ""
+            content.value = ""
+            mood.value = ""
+        })
+        
+        }
     }
-
-    // entriesContainer.innerHTML = ""
-    // API.getJournalEntries()
-    //     .then(entries => {
-    //         console.log(entries)
-    //         // clears the <article> container, 
-    //         // and for each entry,
-    //         entries.forEach(entry => {
-    //             // invokes createJournalEntryComponent, which takes each entry as an argument, and puts it into a string, which is stored in a variable.
-    //             const journalHTML = makeJournalEntryComponent(entry)
-    //             // The function is invoked that puts each entry on the dom.
-    //             entryToDom(journalHTML)
-    //         })
-    //     }) // END OF createJournalEntry().
-
-        // Final, step of "click event" is to THEN clear the value of the input fields.
-        // .then(() => {
-        //     date.value = ""
-        //     concept.value = ""
-        //     content.value = ""
-        //     mood.value = ""
-        // })
+    // Final, step of "click event" is to THEN clear the value of the input fields.
 })
-
+    
+    
 
 // ||| *** FUNCTIONALITY FOR RADIO BUTTONS TO FILTER ENTRIES BY MOOD *** |||
 // "They are called radio buttons because they look and operate in a similar manner to the push buttons on old-fashioned radios." - MDN Web Docs //
@@ -117,58 +115,33 @@ entriesContainer.addEventListener("click", () => {
         // Extract id from the button's id attribute
         const entryToDelete = event.target.id.split("--")[1]
         // Fetch to delete entry which takes entry to delete as argument,
+        // THEN gets all journal entries to dom
         API.deleteEntry(entryToDelete)
-        // THEN gets all journal entries,
-        // COMMENTED OUT THIS CODE AND MOVED IT DOWN TO TEST.
+        .then(getAllJournalEntriesToDom)
     } else {
         if (event.target.id.startsWith("editEntry--")) {
             // If so, split the id from the button's id attribute,
             const entryToEdit = event.target.id.split("--")[1]
             // and fetch the single entry of that id from the database.
+            entriesContainer.innerHTML = ""
             API.getSingleJournalEntry(entryToEdit)
-                // THEN take that entry, 
-                .then(entry => {
-                    // invoke editForm,
-                    editForm(entry)
-
-                    // grab references to the input fields in the form, 
-                    // and assign their values to the entry being edited.
-                    document.querySelector("#hiddenId").value = entry.id,
-                        document.querySelector("#journalDate").value = entry.date,
-                        document.querySelector("#concept").value = entry.date,
-                        document.querySelector("#content").value = entry.content,
-                        document.querySelector("#mood").value = entry.mood
-                })
+            // THEN take that entry, 
+            .then(entry => {
+                // invoke editForm,
+                editForm(entry)
+                // grab references to the input fields in the form, 
+                // and assign their values to the entry being edited.
+                document.querySelector("#hiddenId").value = entry.id,
+                document.querySelector("#journalDate").value = entry.date,
+                document.querySelector("#concept").value = entry.concept,
+                document.querySelector("#content").value = entry.content,
+                document.querySelector("#mood").value = entry.mood
+            })
         }
     }
 })
 
-// API.getJournalEntries().then(parsedEntries => {
-//     // iterates over the array in the database, and for each entry, 
-//     entriesContainer.innerHTML = ""
-//     parsedEntries.forEach(entry => {
-//         // invokes makeJournalEntryComponent, taking each entry as an argument
-//         const journalHtml = makeJournalEntryComponent(entry)
-//         // and clears the container.
-//         // Finally, the function is invoked that puts each entry on the dom.
-//         entryToDom(journalHtml)
-//     })
-// })
-
-
-// ||| *** FUNCTIONALITY FOR EDITING A SINGLE JOURNAL ENTRY *** ||| 
-
-// 1. Create Edit Button on Form +++
-// 2. Put event listener on edit button +++
-// 3. Get API Object of thing to Edit +++
-// 4. Show form for editing +++
-// 5. Populate form +++
-// 6. Save Button (click handler)
-// 7. Save Changes
-// 8. Get thing
-// 9. Show edited thing on Dom
-
-
+export default getAllJournalEntriesToDom
 
 
 
