@@ -6,7 +6,7 @@
 
 import API from "./data.js"
 import entryToDom from "./entriesDOM.js"
-import makeJournalEntryComponent from "./entryComponent.js"
+import { createJournalEntryHtml } from "./createJournalEntryHtml.js"
 import editForm from "./editForm.js"
 
 // ||| *** FUNCTIONALITY TO GET ENTRIES FROM DATABASE ON THE DOM *** |||
@@ -17,8 +17,8 @@ const getAllJournalEntriesToDom = () => {
         entriesContainer.innerHTML = ""
         // iterates over the array in the database, and for each entry, 
         parsedEntries.forEach(entry => {
-            // invokes makeJournalEntryComponent, taking each key and its value as an argument, and stores the returned string in a variable.
-            const journalHtml = makeJournalEntryComponent(entry)
+            // invokes createJournalEntryHtml, taking each key and its value as an argument, and stores the returned string in a variable.
+            const journalHtml = createJournalEntryHtml(entry)
             // Finally, the function is invoked that takes the above variable as an argument and puts each entry on the dom.
             entryToDom(journalHtml)
         })
@@ -35,14 +35,14 @@ const content = document.querySelector("#content")
 const mood = document.querySelector("#mood")
 
 // Factory function that creates a new journal entry by taking each input above as an argument, and returns the value of those inputs when invoked.
-const createJournalEntry = (date, concept, content, mood) => {
-    return {
-        "date": date.value,
-        "concept": concept.value,
-        "content": content.value,
-        "mood": mood.value
-    }
-}
+const createJournalEntry = (date, concept, content, mood) => (
+  {
+    "date": date.value,
+    "concept": concept.value,
+    "content": content.value,
+    "mood": mood.value
+  }
+)
 
 // Stores the "Record Journal Entry" button in a variable.
 const saveEntryButton = document.querySelector("#BTN")
